@@ -41,7 +41,7 @@ const NewPassword = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8080/api/users/reset-password', {
+            const response = await fetch('https://greentrack-i2d7.onrender.com/api/users/reset-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, code, newPassword: password }),

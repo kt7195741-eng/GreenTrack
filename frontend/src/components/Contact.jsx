@@ -38,7 +38,7 @@ const Contact = () => {
             // 1. Grab the token from memory
             const token = localStorage.getItem('token');
 
-            const response = await fetch('http://localhost:8080/api/users/contact', {
+            const response = await fetch('https://greentrack-i2d7.onrender.com/api/users/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
