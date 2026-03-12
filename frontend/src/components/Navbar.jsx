@@ -76,7 +76,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         if (user && user.email) {
             try {
                 const token = localStorage.getItem('token');
-                await fetch('https://greentrack-i2d7.onrender.com/api/users/logout', {
+                await fetch('http://localhost:8080/api/users/logout', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
             console.log('Updating name for:', user.email, 'New name:', newName);
 
             const response = await fetch(
-                `https://greentrack-i2d7.onrender.com/api/users/update-name?email=${encodeURIComponent(user.email)}&newName=${encodeURIComponent(newName)}`,
+                `http://localhost:8080/api/users/update-name?email=${encodeURIComponent(user.email)}&newName=${encodeURIComponent(newName)}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -179,7 +179,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         setIsUpdatingPassword(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`https://greentrack-i2d7.onrender.com/api/users/update-password`, {
+            const response = await fetch(`http://localhost:8080/api/users/update-password`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -212,7 +212,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
     const handleDeleteAccount = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`https://greentrack-i2d7.onrender.com/api/users/delete-account?email=${user.email}`, {
+            const response = await fetch(`http://localhost:8080/api/users/delete-account?email=${user.email}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

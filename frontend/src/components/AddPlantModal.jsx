@@ -32,7 +32,7 @@ const AddPlantModal = ({ isOpen, onClose, onPlantAdded }) => {
             setError('');
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('https://greentrack-i2d7.onrender.com/api/plant-types', {
+                const response = await fetch('http://localhost:8080/api/plant-types', {
                     headers: { 'Authorization': `Bearer ${token}` },
                 });
                 if (!response.ok) {
@@ -164,7 +164,7 @@ const AddPlantModal = ({ isOpen, onClose, onPlantAdded }) => {
 
             // If custom type, create it on the backend first
             if (plantTypeId === null) {
-                const createRes = await fetch('https://greentrack-i2d7.onrender.com/api/plant-types', {
+                const createRes = await fetch('http://localhost:8080/api/plant-types', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({ name: selectedType.name }),
@@ -180,7 +180,7 @@ const AddPlantModal = ({ isOpen, onClose, onPlantAdded }) => {
             const currentUser = JSON.parse(localStorage.getItem('user'));
 
             // Send the request to save the plant
-            const response = await fetch('https://greentrack-i2d7.onrender.com/api/plants', {
+            const response = await fetch('http://localhost:8080/api/plants', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({

@@ -26,7 +26,7 @@ const Dashboard = ({ onLogout }) => {
 
         try {
             const statsResponse = await fetch(
-                `https://greentrack-i2d7.onrender.com/api/plants/user/${currentUser.id}/carbon-stats`,
+                `http://localhost:8080/api/plants/user/${currentUser.id}/carbon-stats`,
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
             if (statsResponse.ok) {
@@ -43,7 +43,7 @@ const Dashboard = ({ onLogout }) => {
         if (!token) return;
 
         try {
-            const response = await fetch('https://greentrack-i2d7.onrender.com/api/plants/my-plants', {
+            const response = await fetch('http://localhost:8080/api/plants/my-plants', {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
             if (response.ok) {
@@ -64,7 +64,7 @@ const Dashboard = ({ onLogout }) => {
         setDeleting(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`https://greentrack-i2d7.onrender.com/api/plants/${id}`, {
+            const response = await fetch(`http://localhost:8080/api/plants/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` },
             });
